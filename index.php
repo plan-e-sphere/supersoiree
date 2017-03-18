@@ -29,9 +29,33 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({url: "action.php", 
+        data: {action: "accueil"},
+        type: 'get',
+        success: function(result){
+            $("#content").html(result);
+        }});
+    });
+function callAction(loadaction){
+    $(document).ready(function(){
+        $("#button").click(function(){
+            $.ajax({url: "action.php", 
+            data: {action: loadaction},
+            type: 'get',
+            success: function(result){
+                $("#content").html(result);
+            }});
+        });
+    });
+}
+</script>
   </head>
 
-  <body>
+  <body onload="callAction('accueil');">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -61,38 +85,20 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="#" id="button" onclick="callAction('accueil');">Accueil <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Vid&eacute;os vues</a></li>
             <li><a href="#">Vid&eacute;os &agrave; voir</a></li>
             <li><a href="#">Vid&eacute;os &agrave revoir ;)</a></li>
           </ul>
           
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Accueil</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://i.ebayimg.com/images/i/311596157953-0-1/s-l1000.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Romi Rain</h4>
-              <span class="text-muted">The best of the best</span>
+        <div id="content">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            test
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://img.crocostars.com/katie-kox/doctor-adventures/mouth-watering-katie-kox-hot-vixen/big.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Katie Kox</h4>
-              <span class="text-muted">La gourmande</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://pbs.twimg.com/media/Cyhr3HrWEAAFc0B.jpg" width="200" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Sophie Dee</h4>
-              <span class="text-muted">serial croqueuse</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="http://www.nexxx.com/media/misc/model742.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Peta Jensen</h4>
-              <span class="text-muted">sage ... en apparence </span>
-            </div>
-          </div>
+        </div>
+            
+    <br/>
 
           
     </div>
@@ -100,6 +106,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+    callAction('accueil');
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="libs/bootstrap/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="libs/bootstrap/docs/dist/js/bootstrap.min.js"></script>
